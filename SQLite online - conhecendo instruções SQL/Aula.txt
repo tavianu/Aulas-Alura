@@ -1,0 +1,7 @@
+Aula 1 - Importando a base de dados
+    - SQL - Structered Query Language (Linguagem de Consultas Estruturadas)
+    - Linguagem para ser usada em bancos relacionais
+        - Tabelas que se relacionam
+    - SGDB utilizado: SQLite Online
+    - Comandos:
+        - SELECT -> 
