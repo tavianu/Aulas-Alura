@@ -1,0 +1,88 @@
+Aula 1 - Importando a base de dados
+    - SQL - Structered Query Language (Linguagem de Consultas Estruturadas)
+    - Linguagem para ser usada em bancos relacionais
+        - Tabelas que se relacionam
+    - SGDB utilizado: SQLite Online
+    - Comandos:
+        - SELECT -> Seleciona os dados de uma tabela
+            - * - seleciona tudo
+            - FROM - de onde será selecionado
+            - Exemplo: SELECT * FROM tabelax - Seleciona todos os dados da tabelax
+        - Filtrando dados:
+            - Adicionar cláusulas ao comando SELECT
+                - WHERE : onde uma informação seja tal coisa
+                    - Exemplo: SELECT * FROM tabelafornecedores WHERE pa_s_de_origem = 'China'; (strings sempre em aspas simples)
+                - DISTINCT : seleciona dados únicos de uma coluna
+                    - Exemplo: SELECT DISTINCT cliente FROM tabelapedidos;
+
+Aula 2 - Criando Tabelas:
+    - CREATE TABLE: criar uma tabela no banco
+        - Sintaxe: CREATE TABLE nome_da_tabela (nome_coluna tipo_de_dado tipo_de_chave,
+            nome_coluna2 tipo_de_dado)
+        - Exemplo: 
+            CREATE TABLE tabelaclientes (
+                ID_cliente INT PRIMARY KEY,
+                Nome_Cliente VARCHAR (250),
+                Informacoes_de_contato VARCHAR (250)
+            );
+    - ALTER TABLE: Altera as tabelas do banco de dados
+        - Sintaxe: ALTER TABLE nome_tabela CONDICAO x;
+            - Condições: 
+                - ADD nome_coluna_nova tipo_de_dado
+                - DROP COLUMN nome_da_coluna
+                - 
+    - DROP: Apaga algo do banco.
+        - Sintaxe: DROP tipo_do_objeto nome_do_objeto
+                   DROP TABLE nome_da_tabela
+                   DROP DATABASE nome_do_banco - Apaga o banco inteiro
+                   DROP SCHEMA nome_do_esquema - Apaga um esquema dentro de um banco
+    - Estrutura das tabelas:
+        - Chave Primária (PRIMARY KEY): um dado que será o identificador da tabela. Através dele, pode-se achar cada dado na tabela pois não pode ser duplicado.
+        - Chave Estrangeira (FOREIGN KEY): Responsável por relacionar as tabelas. Colunas que vem de outra tabela para relacionar.
+
+Aula 3 - Inserindo dados
+    - Inserindo uma linha - INSERT
+        - Sintaxe: INSERT INTO tabela
+                    (coluna1, coluna2)
+                    VALUES
+                    (valores)
+        - Exemplo: INSERT INTO tabelaclientes
+                    (id_cliente,
+                    nome_cliente,
+                    informacoes_de_contato,
+                    endereco_cliente)
+                    VALUES
+                    ('1', 'Ana Silva', 'ana.silva@email.com', 'rua flores - casa 1');
+    - Inserindo múltiplas linhas
+        - INSERT INTO também: inserir vários dados de uma vez
+            - Sintaxe: INSERT INTO tabelaclientes
+                    (id_cliente,
+                    nome_cliente,
+                    informacoes_de_contato,
+                    endereco_cliente)
+                    VALUES
+                    ('2', 'João Santos', 'joao.santos@provedor.com', 'Rua dos Pinheiros, 25'),
+                    ('3', 'Maria Fernandes', 'maria.fernandes@email.com', 'Rua Santo Antonio, 10'),
+                    ('4', 'Carlos Pereira', 'carlos.pereira@email.com', 'Avenida rio, 67');
+    - Inserindo linhas com SELECT:
+        - Inserindo dados em uma tabela com dados de outra:
+            -   Exemplo: Inserir pedidos acima de 500 reais:
+                - INSERT INTO tabelapedidosgold
+                    (ID_pedido_gold,
+                    data_do_pedido_gold,
+                    status_gold,
+                    total_do_pedido_gold,
+                    cliente_gold,
+                    data_de_envio_estimada_gold)
+                    SELECT
+                    id_pedido,
+                    data_do_pedido,
+                    status,
+                    total_do_pedido,
+                    cliente,
+                    data_de_envio_estimada
+                    FROM tabelapedidos
+                    WHERE total_do_pedido >= 400
+Aula 4 - Consultando Dados:
+    - Aplicando filtros - Maior, menor, igual e diferente:
+        - 
