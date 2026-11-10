@@ -85,4 +85,25 @@ Aula 3 - Inserindo dados
                     WHERE total_do_pedido >= 400
 Aula 4 - Consultando Dados:
     - Aplicando filtros - Maior, menor, igual e diferente:
-        - 
+        - Sintaxe:
+            - SELECT * FROM tabelapedidos WHERE Total_Do_Pedido <= 200;
+            - Pode ser usado também para filtrar por letras e datas
+    - Filtros Compostos:
+        - SELECT * FROM tabelapedidos WHERE total_do_pedido > 200 AND status = "Pendente";
+            - AND / OR / NOT / BETWEEN
+    - Ordenando os dados - ORDER BY
+        - SELECT * FROM tabelapedidos WHERE total_do_pedido > 200 AND status = "Pendente" ORDER BY nome_do_produto DESC;
+            - DESC - descendente
+            - ASC - Acendente / crescente.
+    - Utilizando ALIAS
+        - Renomear colunas enquanto fazendo as consultas para que em bancos com nomenclaturas confusas seja mais fácil consultar os dados
+        - Apenas dá um apelido às colunas, não as ronemeia
+        - Sintaxe:
+Aula 5 - Atualizando e excluindo dados
+    - Alterando os dados - UPTADE
+        - UPTADE tabelaclientes
+            SET pedido = 200
+            WHERE pedido > 200
+    - Deletando dados - DELETE:
+        - DELETE FROM tabelafornecedores WHERE país_de_origem = 'Turquia';
+        
